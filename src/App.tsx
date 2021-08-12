@@ -1,25 +1,16 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import { StyledMain, StyledHeader, StyledHeaderText } from "./StyledApp"
+import Home from "./views/Home"
+import "./App.css";
 
-function App() {
+const App: React.FC = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <StyledMain>
+      <StyledHeader>
+        <StyledHeaderText>Output a list of all the cats in alphabetical order under a heading of the gender of their owner</StyledHeaderText>
+      </StyledHeader>
+      <Home />
+    </StyledMain>
   );
 }
 
