@@ -1,7 +1,7 @@
 import * as React from "react";
 import { getDataResults } from "../api";
 import { Owner } from "../types";
-import { sortOwnerPetData } from '../utils/SortData';
+import { fetchCats } from '../utils/SortData';
 
 const Home: React.FC = () => {
   const [userData, setUserData] = React.useState<Owner | undefined>();
@@ -14,7 +14,7 @@ const Home: React.FC = () => {
     load();
   }, []);
 
-  console.log(userData ? sortOwnerPetData(userData) : undefined)
+  console.log(userData ? fetchCats(userData) : undefined)
 
   return (
     <>

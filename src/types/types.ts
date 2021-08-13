@@ -1,4 +1,4 @@
-export interface Pets {
+export interface OwnerPets {
   userName?: string;
   userGender?: string;
   name?: String;
