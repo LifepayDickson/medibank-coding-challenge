@@ -13,10 +13,13 @@ export const StyledMain = styled.main`
 export const StyledHeader = styled.div`
   box-sizing: border-box;
   min-width: 100vw;
-  background: rgb(4, 121, 205);
-  color: white;
+  color: black;
   padding: 1rem 2rem;
   margin: 0 0 1rem;
+`;
+
+export const StyledImg = styled.img`
+  width: 250px;
 `;
 
 export const StyledHeaderText = styled.h1`

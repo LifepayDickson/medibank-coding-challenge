@@ -3,6 +3,6 @@ import App from './App';
 
 test('renders if main App is successfully loaded', () => {
   render(<App />);
-  const linkElement = screen.getByText(/Medibank - Display Owners Pet By Gender/i);
+  const linkElement = screen.getByText(/Display Owners Pet By Gender/i);
   expect(linkElement).toBeInTheDocument();
 });
