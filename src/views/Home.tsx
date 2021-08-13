@@ -1,9 +1,10 @@
 import * as React from "react";
 import { getDataResults } from "../api";
-import { Pets } from "../types";
+import { Owner } from "../types";
+import { sortUserPetData } from '../utils/SortData';
 
 const Home: React.FC = () => {
-  const [userData, setUserData] = React.useState<Pets>();
+  const [userData, setUserData] = React.useState<Owner | undefined>();
 
   React.useEffect(() => {
     // Should Start grabbing data from webServices"
@@ -13,7 +14,7 @@ const Home: React.FC = () => {
     load();
   }, []);
 
-  console.log("========", userData);
+  console.log(userData ? sortUserPetData(userData) : undefined)
 
   return (
     <>
