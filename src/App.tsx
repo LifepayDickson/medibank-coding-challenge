@@ -3,11 +3,12 @@ import { StyledMain, StyledHeader, StyledHeaderText } from "./StyledApp"
 import Home from "./views/Home"
 import "./App.css";
 
+// Delaring Function Component Type for App.js and Adding Styled Components onto respective HTML Tags
 const App: React.FC = () => {
   return (
     <StyledMain>
       <StyledHeader>
-        <StyledHeaderText>Output a list of all the cats in alphabetical order under a heading of the gender of their owner</StyledHeaderText>
+        <StyledHeaderText>Medibank - Display Owners Pet By Gender</StyledHeaderText>
       </StyledHeader>
       <Home />
     </StyledMain>
