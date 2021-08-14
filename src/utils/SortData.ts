@@ -26,7 +26,7 @@ export const fetchCats = (
 };
 
 // Reverse engineering to break user multiple pets to single user with their respective pets.
-const sortOwnerPetData = (data: Owner) => {
+export const sortOwnerPetData = (data: Owner) => {
   // Executes a reducer function on each element of the array, resulting in a single output value.
   let ownerPet = data.reduce((collection: Concat<OwnerPets>, owner: Owner) => {
     // Check if this owner has pets
@@ -46,24 +46,23 @@ const sortOwnerPetData = (data: Owner) => {
       return collection;
     }
   }, []);
-
   return ownerPet;
 };
 
 // Sorting cat name alphabethically
-const sortCats = (list: OwnerPets[]) => {
+export const sortCats = (list: OwnerPets[]) => {
   return list.sort((a: OwnerPets, b: OwnerPets) =>
     (a.name as string) > (b.name as string) ? 1 : -1
   );
 };
 
 // Filter and return Owner that owns a cat
-const filterOwnerWithCats = (cats: OwnerPets[]) => {
+export const filterOwnerWithCats = (cats: OwnerPets[]) => {
   return cats.filter((item) => item.type?.toLowerCase() === "cat");
 };
 
 // Filter and return car Array Results based on Gender
-const filterByGender = (catArray: OwnerPets[], gender: string) => {
+export const filterByGender = (catArray: OwnerPets[], gender: string) => {
   return catArray.filter(
     (item: OwnerPets) => (item.ownerGender as string) === gender
   );
