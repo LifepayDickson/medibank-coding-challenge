@@ -1,7 +1,9 @@
 import * as React from "react";
 import { getDataResults } from "../api";
 import { Owner } from "../types";
-import { fetchCats } from '../utils/SortData';
+
+import Result from '../components/Result/Result';
+import { fetchCats } from "../utils";
 
 const Home: React.FC = () => {
   const [userData, setUserData] = React.useState<Owner | undefined>();
@@ -14,11 +16,13 @@ const Home: React.FC = () => {
     load();
   }, []);
 
-  console.log(userData ? fetchCats(userData) : undefined)
+  let ownersCat = userData ? fetchCats(userData) : undefined;
 
   return (
     <>
-      <p>Initial state of preparing medibank hacking challenge</p>
+      {userData ? (
+        <Result results={ownersCat}/>
+      ) : undefined}
     </>
   );
 };

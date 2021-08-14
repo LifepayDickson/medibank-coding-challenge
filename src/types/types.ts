@@ -1,20 +1,26 @@
 export interface OwnerPets {
-  userName?: string;
-  userGender?: string;
+  ownerName?: string;
+  ownerGender?: string;
   name?: String;
   type?: string;
 }
 
 export interface Owner {
+  [x: string]: any;
   name?: string;
   gender?: string;
   age?: String;
   pets?: PetsName[];
 }
 
+export interface GenderOwnersPet {
+  maleCatList?: OwnerPets[];
+  femaleCatList?: OwnerPets[];
+}
+
 interface PetsName {
-  name: string;
-  type: string;
+  name?: string;
+  type?: string;
 }
 
 export interface Concat<T> {

@@ -1,16 +1,20 @@
 import { OwnerPets, Owner, Concat } from "../types";
 
-// The very beginning of the data retrieval, this is to test your understanding on how to get the owner cats name.
+// The very beginning of the data retrieval. Main goal is to fetch cats name based on owners gender.
 export const fetchCats = (
   data: Owner
 ): { maleCatList?: OwnerPets[]; femaleCatList?: OwnerPets[] } => {
+  // Do a validation check when reading data, check if Array data is empty
   if (data === undefined) {
     return {};
   }
+  // Begin sorting owners data and break it down to single user with pets.
   let catArray: OwnerPets[] = sortOwnerPetData(data);
+  // Depending on returned data, check if array contains item if not return empty.
   if (catArray.length === 0) {
     return {};
   }
+  // Break it down to list of owner gender that owns a cat.
   return {
     maleCatList: sortCats(
       filterOwnerWithCats(filterByGender(catArray, "Male"))
@@ -23,11 +27,6 @@ export const fetchCats = (
 
 // Reverse engineering to break user multiple pets to single user with their respective pets.
 const sortOwnerPetData = (data: Owner) => {
-  // Do a validation check when reading data, check if Array data is empty
-  if (data === undefined || !Array.isArray(data) || data.length === 0) {
-    return [];
-  }
-
   // Executes a reducer function on each element of the array, resulting in a single output value.
   let ownerPet = data.reduce((collection: Concat<OwnerPets>, owner: Owner) => {
     // Check if this owner has pets
@@ -37,8 +36,9 @@ const sortOwnerPetData = (data: Owner) => {
         let mergePetOwner: OwnerPets = {};
         // Copies all enumerable owner properties from one or more source objects to a target object. It returns the modified target object.
         Object.assign(mergePetOwner, pet);
-        mergePetOwner.userName = owner.name;
-        mergePetOwner.userGender = owner.gender;
+
+        mergePetOwner.ownerName = owner.name;
+        mergePetOwner.ownerGender = owner.gender;
         return mergePetOwner;
       });
       return collection.concat(pets);
@@ -46,6 +46,7 @@ const sortOwnerPetData = (data: Owner) => {
       return collection;
     }
   }, []);
+
   return ownerPet;
 };
 
@@ -64,6 +65,6 @@ const filterOwnerWithCats = (cats: OwnerPets[]) => {
 // Filter and return car Array Results based on Gender
 const filterByGender = (catArray: OwnerPets[], gender: string) => {
   return catArray.filter(
-    (item: OwnerPets) => (item.userGender as string) === gender
+    (item: OwnerPets) => (item.ownerGender as string) === gender
   );
 };
