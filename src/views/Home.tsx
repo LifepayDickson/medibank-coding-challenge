@@ -2,7 +2,7 @@ import * as React from "react";
 import { getDataResults } from "../api";
 import { Owner } from "../types";
 
-import Result from '../components/Result/Result';
+import Result from "../components/Result/Result";
 import { fetchCats } from "../utils";
 
 const Home: React.FC = () => {
@@ -19,11 +19,7 @@ const Home: React.FC = () => {
   let ownersCat = userData ? fetchCats(userData) : undefined;
 
   return (
-    <>
-      {userData ? (
-        <Result results={ownersCat}/>
-      ) : undefined}
-    </>
+    <>{userData ? <Result results={ownersCat} /> : <p>No Results Found</p>}</>
   );
 };
 
