@@ -3,7 +3,11 @@ import { OwnerPets, Owner, Concat } from "../types";
 // The very beginning of the data retrieval. Main goal is to fetch cats name based on owners gender.
 export const fetchCats = (
   data: Owner
-): { maleCatList?: OwnerPets[]; femaleCatList?: OwnerPets[] } => {
+): {
+  maleCatList?: OwnerPets[];
+  femaleCatList?: OwnerPets[];
+  defaultByFemale?: Owner[];
+} => {
   // Do a validation check when reading data, check if Array data is empty
   if (data === undefined) {
     return {};
@@ -14,6 +18,7 @@ export const fetchCats = (
   if (catArray.length === 0) {
     return {};
   }
+
   // Break it down to list of owner gender that owns a cat.
   return {
     maleCatList: sortCats(
@@ -22,6 +27,7 @@ export const fetchCats = (
     femaleCatList: sortCats(
       filterOwnerWithCats(filterByGender(catArray, "Female"))
     ),
+    defaultByFemale: filterByDefaultGender(data, "Female"),
   };
 };
 
@@ -36,7 +42,7 @@ export const sortOwnerPetData = (data: Owner) => {
         let mergePetOwner: OwnerPets = {};
         // Copies all enumerable owner properties from one or more source objects to a target object. It returns the modified target object.
         Object.assign(mergePetOwner, pet);
-
+        // (To DO display pets by femals)
         mergePetOwner.ownerName = owner.name;
         mergePetOwner.ownerGender = owner.gender;
         return mergePetOwner;
@@ -66,4 +72,9 @@ export const filterByGender = (catArray: OwnerPets[], gender: string) => {
   return catArray.filter(
     (item: OwnerPets) => (item.ownerGender as string) === gender
   );
+};
+
+// Filter and return car Array Results based on Gender
+export const filterByDefaultGender = (data: Owner, gender: string) => {
+  return data.filter((item: Owner) => (item.gender as string) === gender);
 };

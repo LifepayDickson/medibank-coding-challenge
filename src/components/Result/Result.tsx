@@ -37,6 +37,26 @@ const Result: React.FC<Props> = ({ results }) => {
           );
         })}
       </div>
+      <StyledResultHeaderText>Female Owner with their Pets</StyledResultHeaderText>
+      <div>
+        {results?.defaultByFemale?.map((item, i) => {
+          return (
+            <StyledResultOwner gender={item.gender} key={i}>
+              <p>Owner: {item.name}</p>
+              <p>Gender: {item.gender}</p>
+              <p><b>Pets</b></p>
+                {item.pets?.map((pet, j) => {
+                  return (
+                <div key={j}>
+                  <p>Name: {pet.name}</p>
+                  <p>Type: {pet.type}</p>
+                  </div>
+                  )
+                })}
+            </StyledResultOwner>
+          );
+        })}
+      </div>
     </StyledResult>
   );
 };
