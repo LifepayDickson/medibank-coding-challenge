@@ -16,7 +16,6 @@ export interface Owner {
 export interface GenderOwnersPet {
   maleCatList?: OwnerPets[];
   femaleCatList?: OwnerPets[];
-  defaultByFemale?: Owner[];
 }
 
 interface PetsName {

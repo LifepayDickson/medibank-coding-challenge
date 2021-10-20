@@ -6,7 +6,6 @@ export const fetchCats = (
 ): {
   maleCatList?: OwnerPets[];
   femaleCatList?: OwnerPets[];
-  defaultByFemale?: Owner[];
 } => {
   // Do a validation check when reading data, check if Array data is empty
   if (data === undefined) {
@@ -27,7 +26,6 @@ export const fetchCats = (
     femaleCatList: sortCats(
       filterOwnerWithCats(filterByGender(catArray, "Female"))
     ),
-    defaultByFemale: filterByDefaultGender(data, "Female"),
   };
 };
 
